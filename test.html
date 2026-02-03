@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Weather App</title>
+        <script src="/assets/js/countriesnow.js"></script>
+        <script src="/assets/js/newsapi.js"></script>
+        <script src="/assets/js/localstorage.js"></script>
+    </head>
+    <body>
+        <input id="inputField" placeholder="Enter text...">
+        <button onclick="saveInput()">Save</button>
+        <button onclick="showRecords()">Show in Console</button>
+        <button onclick="clearRecords()">Clear All</button>
+
+        <script>
+        function saveInput() {
+            const input = document.getElementById('inputField');
+            if (input.value.trim()) {
+                addRecord(input.value);
+                input.value = '';
+                alert('Record saved!');
+            }
+        }
+        </script>
+    </body>
+</html>
