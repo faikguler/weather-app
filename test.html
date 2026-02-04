@@ -2,10 +2,54 @@
     <head>
         <title>Weather App</title>
         <script src="/assets/js/countriesnow.js"></script>
-        <script src="/assets/js/newsapi.js"></script>
         <script src="/assets/js/localstorage.js"></script>
     </head>
     <body>
+
+<div class="form-group">
+    <label for="country-select">Countries</label>
+    <select class="form-control" id="country-select">
+        <option value="">Select Country</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="city-select">City</label>
+    <select class="form-control" id="city-select" disabled>
+        <option value="">Select City</option>
+    </select>
+</div>
+
+<button id="submit-btn" class="btn btn-primary" disabled>Send</button>
+
+
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+    <label for="city-search">Search City (from all countries)</label>
+    <input type="text" class="form-control" id="city-search" placeholder="Start typing city name..." list="all-cities-list">
+    <datalist id="all-cities-list">
+
+    </datalist>
+</div>
+<button id="submit-search" class="btn btn-success">Send from Search</button>
+
+
+
+
+
+
+
+
+
+
         <input id="inputField" placeholder="Enter text...">
         <button onclick="saveInput()">Save</button>
         <button onclick="showRecords()">Show in Console</button>
