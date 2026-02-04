@@ -12,7 +12,13 @@ async function fetchLast10News() {
     try {
         console.log('latest news');
 
-        const response = await fetch(API_URL);
+       // const response = await fetch(API_URL);
+        const response = await fetch(CORS_PROXY + API_URL, {
+        headers: {
+            'Origin': 'https://faikguler.github.io'
+        }
+        });
+
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
