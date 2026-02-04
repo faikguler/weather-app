@@ -6,15 +6,13 @@
 const NEWS_API_KEY = '1d94732338544aee851c1996fe6931be'; 
 const COUNTRY = 'us';
 const API_URL = `https://newsapi.org/v2/top-headlines?country=${COUNTRY}&apiKey=${NEWS_API_KEY}`;
-const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
 
 // Function to fetch and display the last 10 news articles
 async function fetchLast10News() {
     try {
         console.log('latest news');
 
-        //const response = await fetch(API_URL);
-        const response = await fetch(CORS_PROXY + API_URL); 
+        const response = await fetch(API_URL);
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -22,7 +20,6 @@ async function fetchLast10News() {
 
         const data = await response.json();
 
-        console.log(data);
         const newsContainer = document.getElementById('news-container');
 
         if (data.status === 'ok' && data.articles.length > 0) {
