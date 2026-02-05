@@ -5,7 +5,7 @@
 // Configuration
 const NEWS_API_KEY = '1d94732338544aee851c1996fe6931be'; 
 const COUNTRY = 'us';
-const API_URL = `https://newsapi.org/v2/top-headlines?country=${COUNTRY}&apiKey=${NEWS_API_KEY}`;
+const API_URL = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=${COUNTRY}&apiKey=${NEWS_API_KEY}`;
 
 // Function to fetch and display the last 10 news articles
 async function fetchLast10News() {
