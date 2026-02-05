@@ -3,9 +3,18 @@
 document.getElementById("fetchInfo").addEventListener("click", onfetchInfo);
 
 function onfetchInfo() {
+  
+  document.getElementById("flag").innerHTML="";
+  document.getElementById("language").innerHTML="";
+  document.getElementById("population").innerHTML="";
+  document.getElementById("region").innerHTML="";
+  document.getElementById("capital").innerHTML="";
+  document.getElementById("map").innerHTML="";
+
   const country = document.getElementById("country").value;
 
   if (country) {
+    
     // GitHub API endpoint for fetching country info
     const url = `https://restcountries.com/v3.1/name/${country}`;
 
@@ -13,11 +22,17 @@ function onfetchInfo() {
     fetch(url)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Country not found");
+        //   throw new Error("Country not found");
+          document.getElementById("flag").innerHTML = "Country not found";
+          return;
         }
         return response.json();
       })
       .then((data) => {
+        if(data[0].name.common != country){
+            document.getElementById("flag").innerHTML = "Enter country full name"
+            return;
+            }
         renderPopulation(data);
         renderLanguage(data);
         renderRegion(data);
@@ -30,6 +45,7 @@ function onfetchInfo() {
       });
   } else {
     console.log("Please enter a country.");
+    document.getElementById("flag").innerHTML = "Please enter a country"
   }
 }
 
@@ -87,7 +103,6 @@ const renderRegion = (country) => {
   
   country.forEach((countries) => {
     const countryRegion = countries.region;
-    console.log(countryRegion);
     html += `<li>Region: ${countryRegion}</li>`;
   });
 
