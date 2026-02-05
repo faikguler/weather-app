@@ -103,7 +103,14 @@ async function fetchLast10News() {
         }
     } catch (error) {
        // console.error('Failed to fetch news:', error.message);
-       document.getElementById('news-container').innerHTML =`<div class="col-12 text-center"><p>Failed to fetch news. Please try again later.</p></div>`;
+       document.getElementById('news-container').innerHTML =`<div class="col-12 text-center"><p>Failed to fetch news. Please try again later.</p>
+      
+       
+       
+       <h2>This page actually works locally as shown below. However, the News API only allows local testing. Although I tried the Cors Proxy pages, they didn't work. Therefore, I'm sharing a screenshot from my local setup.</h2>
+
+        <img src='assets/images/news.png'>
+       </div>`;
     }
 }
 
