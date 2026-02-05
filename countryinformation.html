@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- html layout copied from Faik's week 3 assignment to maiintain consistency across webpage. Only the section element updated by Eve-Lyn -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,6 @@
        <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand font-weight-bold text-secondary" href="index.html">The Hustler Collective</a>
@@ -40,25 +40,36 @@
         </div>
     </nav>
 
+    <!-- Update here -->
     <section id="countryinformation">
-       <div class="container">
+        <div class="container">
             <div class="row justify-content-center">
-                <div class="col"> country information
-                1 of 2
-                </div>
                 <div class="col">
-                2 of 2
+                    <h1>Country Info</h1>
+                    <!-- <p>Enter a country to find out more</p><br> -->
+                    <label for="country">Enter a country to find out more.</label>
+                    <input type="text" id="country" placeholder="Country" required>
+                    <button id="fetchInfo">Fetch Info</button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                1 of 3
+            <div class="col">
+                <div class="row justify-content-center" id="flag">
+                    1 of 2
                 </div>
-                <div class="col">
-                2 of 3
+                <div class="row justify-content-center" id="language">
+                    1 of 2
                 </div>
-                <div class="col">
-                3 of 3
+                <div class="row justify-content-center" id="population">
+                    1 of 2
+                </div>
+                <div class="row justify-content-center" id="region">
+                    1 of 2
+                </div>
+                <div class="row justify-content-center" id="capital">
+                    1 of 2
+                </div>
+                <div class="row justify-content-center" id="map">
+                    1 of 2
                 </div>
             </div>
         </div>
@@ -98,7 +109,10 @@
            
     </footer>
 
-
+    <!-- add javascript for country info -->
+     <script src="./assets/js/countryinfo.js"></script>
+    <!--  -->
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
