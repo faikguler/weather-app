@@ -14,7 +14,7 @@ The goal of this project is to eliminate the need for visiting multiple websites
   Works seamlessly on mobile, tablet, and desktop devices.
 
 - **Multi-API Integration**  
-  Integrates **5 different APIs** into a single platform.
+  Integrates **4 different APIs** into a single platform.
 
 - **Bootstrap Components**  
   Utilizes responsive navbar, cards, forms, and grid system.
@@ -47,7 +47,6 @@ The goal of this project is to eliminate the need for visiting multiple websites
 - RestCountries API  
 - NewsAPI  
 - CountriesNow API  
-- CountryInfo API
 
 ### Tools
 - Git  
