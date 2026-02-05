@@ -29,7 +29,7 @@ function onfetchInfo() {
         return response.json();
       })
       .then((data) => {
-        if(data[0].name.common.toLowerCase() != country){
+        if(data[0].name.common.toLowerCase() != country.toLowerCase()){
             document.getElementById("flag").innerHTML = "Enter country full name"
             return;
             }
