@@ -40,35 +40,62 @@
         </div>
     </nav>
 
-    <section id="weatherinformation">
-       <div class="container">
-            <div class="row justify-content-center">
-                <div class="col"> weatherinformation
-                1 of 2
-                </div>
-                <div class="col">
-                2 of 2
-                </div>
+    <style>
+        .weather-section { padding-top: 100px; min-height: 80vh; }
+        .search-form { max-width: 400px; margin: 0 auto; }
+        .search-form input {
+            width: 100%; padding: 10px 14px; border: 2px solid #ccc;
+            border-radius: 6px; font-size: 16px; outline: none;
+            transition: border-color .2s;
+        }
+        .search-form input:focus { border-color: #555; }
+        .search-form input.error { border-color: #e74c3c; background: #fdecea; }
+        .search-form button {
+            width: 100%; margin-top: 10px; padding: 10px;
+            border: none; border-radius: 6px; background: #333; color: #fff;
+            font-size: 16px; cursor: pointer; transition: background .2s;
+        }
+        .search-form button:hover { background: #555; }
+        .error-msg { color: #e74c3c; text-align: center; margin-top: 8px; font-size: 14px; display: none; }
+        .weather-result {
+            max-width: 400px; margin: 30px auto 0; padding: 24px;
+            border: 1px solid #e0e0e0; border-radius: 10px; background: #fafafa;
+            display: none;
+        }
+        .weather-result h3 { margin: 0 0 4px; font-size: 22px; }
+        .weather-result .time { color: #888; font-size: 13px; margin-bottom: 16px; }
+        .weather-result .temp { font-size: 48px; font-weight: 700; margin: 0; }
+        .weather-result .desc { color: #666; text-transform: capitalize; margin: 4px 0 16px; }
+        .weather-result .details { display: flex; justify-content: space-between; border-top: 1px solid #eee; padding-top: 14px; }
+        .weather-result .details div { text-align: center; }
+        .weather-result .details .label { font-size: 12px; color: #999; }
+        .weather-result .details .value { font-size: 16px; font-weight: 600; }
+    </style>
+
+    <section class="weather-section">
+        <div class="container text-center">
+            <h2 style="margin-bottom: 24px; font-weight: 600;">Weather</h2>
+
+            <div class="search-form">
+                <input type="text" id="cityInput" placeholder="Enter city" autocomplete="off">
+                <button id="weatherBtn" type="button">Get Weather</button>
             </div>
-            <div class="row">
-                <div class="col">
-                1 of 3
-                </div>
-                <div class="col">
-                2 of 3
-                </div>
-                <div class="col">
-                3 of 3
+
+            <div id="weatherResult" class="weather-result">
+                <h3 id="wPlace"></h3>
+                <p class="time" id="wTime"></p>
+                <p class="temp"><span id="wTemp">--</span>°C</p>
+                <p class="desc" id="wDesc"></p>
+                <div class="details">
+                    <div><span class="label">Feels like</span><br><span class="value" id="wFeels">--°C</span></div>
+                    <div><span class="label">Humidity</span><br><span class="value" id="wHum">--%</span></div>
+                    <div><span class="label">Wind</span><br><span class="value" id="wWind">-- km/h</span></div>
                 </div>
             </div>
         </div>
-    </section>	
-    
+    </section>
 
-	
-	
-	
-	    
+
 
   <!-- Footer -->
     <footer class="bg-light py-4 mt-5">
@@ -102,6 +129,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="assets/js/openweather.js"></script>
+    <script src="assets/js/weatherpage.js"></script>
 
 </body>
 </html>
