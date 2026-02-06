@@ -6,6 +6,8 @@
     <title>The Hustler Collective</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
        <link rel="stylesheet" href="assets/css/custom.css">
+       <script src="assets/js/countriesnow.js"></script>
+       <script src="assets/js/localstorage.js"></script>
 </head>
 <body>
 
@@ -42,7 +44,7 @@
 
     <style>
         .weather-section { padding-top: 100px; min-height: 80vh; }
-        .search-form { max-width: 400px; margin: 0 auto; }
+        .search-form {margin: 0 auto; }
         .search-form input {
             width: 100%; padding: 10px 14px; border: 2px solid #ccc;
             border-radius: 6px; font-size: 16px; outline: none;
@@ -62,6 +64,7 @@
             border: 1px solid #e0e0e0; border-radius: 10px; background: #fafafa;
             display: none;
         }
+        
         .weather-result h3 { margin: 0 0 4px; font-size: 22px; }
         .weather-result .time { color: #888; font-size: 13px; margin-bottom: 16px; }
         .weather-result .temp { font-size: 48px; font-weight: 700; margin: 0; }
@@ -76,14 +79,39 @@
         <div class="container text-center">
             <h2 style="margin-bottom: 24px; font-weight: 600;">Weather</h2>
 
-            <div class="search-form">
-                <input type="text" id="cityInput" placeholder="Enter city" autocomplete="off">
-                <button id="weatherBtn" type="button">Get Weather</button>
+            <div class="search-form row">
+                <div class="col-md-6 mb-5 mb-md-0">
+                    <div class="d-flex flex-column h-100">
+                        <input type="text" class="form-control" id="city-search" placeholder="Start typing city name..." list="all-cities-list">
+                        <datalist id="all-cities-list"></datalist>
+                        <button id="submit-search" class="btn btn-success mt-2 mt-md-auto">Get Weather</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="d-flex flex-column h-100">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <select class="form-control" id="country-select">
+                                    <option value="">Select Country</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <select class="form-control" id="city-select" disabled>
+                                    <option value="">Select City</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="submit-btn" class="btn btn-success mt-2 mt-md-auto" disabled>Get Weather</button>
+                    </div>
+                </div>
             </div>
 
             <div id="weatherResult" class="weather-result">
                 <h3 id="wPlace"></h3>
                 <p class="time" id="wTime"></p>
+                <img id="wIcon" src="" alt="Weather Icon">
                 <p class="temp"><span id="wTemp">--</span>°C</p>
                 <p class="desc" id="wDesc"></p>
                 <div class="details">
@@ -92,7 +120,20 @@
                     <div><span class="label">Wind</span><br><span class="value" id="wWind">-- km/h</span></div>
                 </div>
             </div>
-        </div>
+
+
+            <div class="last-searches-section mt-5">
+                <h4 class="mb-3">Last Searches</h4>
+                
+                <div id="last-searches-container" class="mb-4">
+                   
+                </div>
+                
+                <button id="clear-history-btn" class="btn btn-outline-danger btn-sm"  onclick="clearRecords()">
+                    Clear History
+                </button>
+            </div>             
+        </div>      
     </section>
 
 

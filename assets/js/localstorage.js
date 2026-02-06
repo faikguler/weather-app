@@ -27,25 +27,31 @@ function getRecords() {
 
 function clearRecords() {
     localStorage.removeItem('lastRecords');
+    showRecords();
     return [];
 }
 
 // 4. Show records in console
 function showRecords() {
+     document.getElementById('last-searches-container').innerHTML="";
     const records = getRecords();
     
-    console.log('LAST RECORDS:');
+   // console.log('LAST RECORDS:');
     
     if (records.length === 0) {
-        console.log('No records yet');
+       // console.log('No records yet');
+        document.getElementById('last-searches-container').innerHTML="No Records Yet";
     } else {
         records.forEach((record, index) => {
-            console.log(`${index + 1}. ${record.text} - ${record.date}`);
+          //  console.log(`${index + 1}. ${record.text} - ${record.date}`);
+            document.getElementById('last-searches-container').innerHTML+=`${index + 1}. ${record.text} - ${record.date}`+"<br>";
         });
     }    
 }
 
-showRecords();
+document.addEventListener('DOMContentLoaded', function() {
+    showRecords();
+});
 
-const allRecords = getRecords();
-console.log(allRecords);
+//const allRecords = getRecords();
+//console.log(allRecords);
