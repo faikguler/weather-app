@@ -16,26 +16,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
 
                     countriesData = data.data;
-                    
-                    data.data.forEach(country => {
-                        //console.log(`${country.country} (${country.iso2})`);
-                        const option = document.createElement('option');
-                        option.value=country.country;
-                        option.textContent=country.country;
-                        countrySelect.appendChild(option);
+                    if (countrySelect) {
+                        data.data.forEach(country => {
+                            //console.log(`${country.country} (${country.iso2})`);
+                            const option = document.createElement('option');
+                            option.value=country.country;
+                            option.textContent=country.country;
+                            countrySelect.appendChild(option);
 
-                    });
+                        });
+                    }
                     
                   AllCitiesList();
 
                 })
                 .catch(error => {
-                    //console.error('Error:', error);
-                    countrySelect.innerHTML = '<option value="">Error</option>';
+                    console.error('Error:', error);
+                    if (countrySelect) {
+                        countrySelect.innerHTML = '<option value="">Error</option>';
+                    }
                 });
         }
 
         function getCitiesData(countryName) {
+            if (!citySelect) return;
+
             citySelect.disabled = true;
 
             const country = countriesData.find(c => 
@@ -71,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             getCountriesData();
             
-
+        if (countrySelect) {
             countrySelect.addEventListener('change', function(e) {
                 selectedCountry = e.target.value;
                 
@@ -84,8 +89,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitBtn.disabled = true;
                 }
             });
-            
-
+        }
+        
+        if (citySelect) {
             citySelect.addEventListener('change', function(e) {
                 selectedCity = e.target.value;
                 
@@ -95,8 +101,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitBtn.disabled = true;
                 }
             });
-            
+        }
 
+
+        if (submitBtn) {
             submitBtn.addEventListener('click', function() {
                 if (selectedCountry && selectedCity) {
                     alert(`Select Country: ${selectedCountry} Selected City: ${selectedCity}`);
@@ -105,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert('Please Select Country and City!');
                 }
             });
-
+        }
 
 
 
@@ -119,6 +127,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             function AllCities() {
                 const allCities = [];
+
+                if (!countriesData || countriesData.length === 0) {
+                    console.log('Countries data not loaded yet');
+                    return allCities;
+                }
+
                 countriesData.forEach(country => {
                     if (country.cities) {
                         country.cities.forEach(city => {
@@ -134,8 +148,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         function AllCitiesList() {
-            const allCities = AllCities();
+
             const datalist = document.getElementById('all-cities-list');
+
+            if (!datalist) return; 
+
+            const allCities = AllCities();
+
             datalist.innerHTML = '';
             
             allCities.forEach(city => {
@@ -145,15 +164,20 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        citySearch.setAttribute('list', 'all-cities-list');
-    
+        if (citySearch) {
+            citySearch.setAttribute('list', 'all-cities-list');
+        }
+        
+    if (submitSearch) {
         submitSearch.addEventListener('click', function() {
             const searchedCity = citySearch.value.trim();
             if (searchedCity) {
                 alert(`Search City: ${searchedCity}`);
                 
                 const country = countriesData.find(c => 
-                    c.cities && c.cities.includes(searchedCity)
+                    c.cities && c.cities.some(city => 
+                        city.toLowerCase() === searchedCity.toLowerCase()
+                    )               
                 );
 
                 
@@ -169,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Enter city please');
             }
         });
-
+    }
 
 
 });
