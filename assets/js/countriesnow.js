@@ -50,7 +50,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if (country && country.cities) {
 
                 citySelect.innerHTML = '';// 
+                citySelect.setAttribute('data-country', countryName);
 
+                const selectcityoption = document.createElement('option');
+                selectcityoption.value = '';
+                selectcityoption.textContent = 'Select City';
+                selectcityoption.selected = true;
+                selectcityoption.disabled = true;
+                citySelect.appendChild(selectcityoption);
+                
                 country.cities.forEach((city) => {
                     //console.log(city);
                         const option = document.createElement('option');
