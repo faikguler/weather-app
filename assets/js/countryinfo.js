@@ -48,6 +48,10 @@ function onfetchInfo() {
     console.log("Please enter a country.");
     document.getElementById("flag").innerHTML = "Please enter a country"
   }
+
+  // clear the input value once button is clicked
+  document.getElementById("country").value="";
+
 }
 
 const renderFlag = (country) => {
