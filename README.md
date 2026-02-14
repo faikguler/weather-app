@@ -64,7 +64,6 @@ The goal of this project is to eliminate the need for visiting multiple websites
 - newsapi.js  
 - index.html
 - contact.html
-- test.html
 - news.html
 
 ### Anton
