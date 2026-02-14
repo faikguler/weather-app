@@ -53,3 +53,25 @@ The goal of this project is to eliminate the need for visiting multiple websites
 - GitHub  
 - Browser LocalStorage  
 - Visual Studio Code
+
+---
+
+## 📝 Responsibilities
+
+### Faik (Team Lead)
+- countriesnow.js
+- localstorage.js
+- newsapi.js  
+- index.html
+- contact.html
+- news.html
+
+### Anton
+- openweather.js  
+- weatherpage.js
+- weatherinformation.html 
+
+### Eve-Lyn
+- countryinfo.js 
+- countryinformation.html
+
