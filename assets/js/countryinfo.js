@@ -22,13 +22,14 @@ function onfetchInfo() {
     fetch(url)
       .then((response) => {
         if (!response.ok) {
-        //   throw new Error("Country not found");
           document.getElementById("flag").innerHTML = "Country not found";
           return;
         }
         return response.json();
       })
       .then((data) => {
+        // noticced that abbreviations were matching to multiple countries, so handled this by taking the first entry [0] in the json file and evaluating
+        // if it equals user input. If not, then request full country name. 
         if(data[0].name.common.toLowerCase() != country.toLowerCase()){
             document.getElementById("flag").innerHTML = "Enter country full name"
             return;
